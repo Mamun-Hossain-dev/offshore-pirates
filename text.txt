@@ -1,0 +1,195 @@
+📜 Overall Project Structure (Routes & Content Plan)
+less
+Copy
+Edit
+src/
+ ├── app/
+ │   ├── layout.tsx          // Global layout (Navbar, Footer, Theme)
+ │   ├── page.tsx            // Home
+ │   ├── services/
+ │   │   ├── page.tsx        // Services main
+ │   │   ├── [serviceId]/page.tsx // Single service detail
+ │   ├── about/
+ │   │   └── page.tsx
+ │   ├── career/
+ │   │   └── page.tsx
+ │   ├── blog/
+ │   │   ├── page.tsx
+ │   │   ├── [slug]/page.tsx
+ │   ├── contact/
+ │   │   └── page.tsx
+ │   ├── _components/        // All shared components
+ │   ├── _lib/               // JSON data + helpers
+ │   └── _hooks/             // React Query hooks
+ ├── public/
+ │   └── images/             // Optimized images
+🛳 Routes & Page Details
+1. Home ( / )
+Goal: First impression → speed, bold visuals, CTA.
+Sections:
+
+Hero Banner – Full width video/animated background with tagline:
+"Fearless Voices. Relentless Results."
+CTA buttons → “Explore Services” & “Get Consultation”.
+
+Our Core Services (Top 3) – Cards with hover 3D tilt effect (Customer Support, Back Office, Accounting).
+
+Why Choose Us – Horizontal scroll ShadCN cards with icons + micro animations.
+
+Industries Served – Logos & subtle motion (e.g. healthcare, finance, retail).
+
+Client Testimonials – ShadCN carousel + indigo-themed design.
+
+Latest Blogs – 3 latest posts preview with “Read More” links.
+
+Global Map + Contact CTA – Animated world map showing service locations.
+
+2. Services ( /services )
+Goal: Display full hierarchy of 9 services (from most-demand to least).
+Layout:
+
+Sticky filter bar (Categories: All, Customer Support, Finance, etc.)
+
+Service Cards (ShadCN Card + hover gradient border animation)
+
+Load More / Pagination with React Query (simulated local API).
+
+Card Content:
+
+Icon + Title + Short Description (from JSON)
+
+“View Details” button → /services/[serviceId]
+
+3. Service Detail ( /services/[serviceId] )
+Goal: Deep-dive into one service.
+Layout:
+
+Hero section – Service name + gradient background + icon.
+
+Intro Paragraph – Why this service matters.
+
+Client Problem → Solution block.
+
+Sub-services Grid (list of features from JSON).
+
+Infographic-styled Stats (from blogs doc — e.g., cost savings %, response time).
+
+CTA Section – Book Consultation.
+
+4. About Us ( /about )
+Goal: Tell the brand story.
+Sections:
+
+Company Intro – “The Global Crew You’ve Been Searching For”.
+
+Our Values – ShadCN accordion for “Fearless Commitment, Relentless Innovation, Service Excellence”.
+
+Global Reach Map – Interactive pins showing locations served.
+
+Leadership Team – Photo cards + LinkedIn links.
+
+Timeline Animation – How Offshore Pirates evolved.
+
+5. Career ( /career )
+Goal: Attract applicants.
+Sections:
+
+Why Work With Us – ShadCN stepper component for growth path.
+
+Open Positions List – Accordion style job cards with “Apply Now” buttons.
+
+Perks & Benefits – Icon grid.
+
+Quick Apply Form – React Hook Form + validation.
+
+6. Blog ( /blog )
+Goal: Share industry expertise.
+Layout:
+
+Blog grid (image + title + category tag).
+
+Search + Filter by category.
+
+Pagination with React Query.
+
+7. Blog Detail ( /blog/[slug] )
+Goal: Rich reading experience.
+Features:
+
+Large title, date, author.
+
+Table of contents (auto-scroll highlight).
+
+Optimized images & infographics.
+
+Related posts section.
+
+8. Contact ( /contact )
+Goal: Conversion-focused form.
+Layout:
+
+Left column: Company info, location map.
+
+Right column: Form with animated field focus.
+
+Validation: Name, Email, Service interest, Message.
+
+Submit → success toast + “We’ll reach out soon” message.
+
+🎨 UI/UX Styling Guidelines
+Color Palette: Deep indigo + gradient blues + white contrast.
+
+Typography: ShadCN default + custom bold headings.
+
+Animations: Framer Motion for:
+
+Page transitions
+
+Card hover tilt
+
+Fade-in on scroll
+
+Icons: Lucide + custom SVGs for service categories.
+
+Dark/Light Mode Toggle – built-in ShadCN theme system.
+
+📦 JSON Data Example
+services.json
+
+json
+Copy
+Edit
+[
+  {
+    "id": "customer-support",
+    "title": "Customer Support Services",
+    "shortDesc": "24/7 multilingual, omnichannel support for customer retention.",
+    "problem": "Slow response times and language gaps hurt brand loyalty.",
+    "solution": "Instant, culturally accurate, unified support worldwide.",
+    "features": [
+      "Inbound Customer Support",
+      "Outbound Engagement",
+      "Technical Support (Tier 1–3)",
+      "Live Chat & Email Support",
+      "Social Media Care",
+      "Omnichannel Integration"
+    ],
+    "stats": {
+      "responseTime": "35–50% faster",
+      "csatIncrease": "15–25% higher",
+      "costSaving": "20–40%"
+    }
+  }
+]
+⚡ Tech Decisions
+React Query → Fetch from /lib/data simulating API.
+
+ShadCN → Cards, accordions, forms, modals.
+
+Framer Motion → Smooth transitions & micro-interactions.
+
+Next.js App Router → SEO-friendly, fast navigation.
+
+Image Optimization → next/image with placeholders.
+
+Accessibility → ARIA labels, focus rings, keyboard navigation.
